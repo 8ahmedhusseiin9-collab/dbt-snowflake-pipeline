@@ -1,0 +1,12 @@
+version: 2 # version of yaml schema
+
+sources:
+  - name: raw_data
+    database: finance_db
+    schema: raw
+    tables:
+      - name: customers
+      - name: orders
+      - name: order_items
+      - name: products
+    
