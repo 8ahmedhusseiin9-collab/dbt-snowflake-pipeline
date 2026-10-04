@@ -55,3 +55,17 @@ airflow/
 
 - dbt is installed in its own virtualenv inside the Airflow image to avoid dependency conflicts with Airflow.
 - Sharing the `target/` folder between Windows and the container caused partial-parse errors, fixed by running dbt with `--no-partial-parse` and a container-local `--target-path`.
+
+## Screenshots
+
+**Airflow DAG (dbt run -> dbt test):**
+
+![Airflow DAG](docs/airflow-dag.png)
+
+**dbt lineage graph:**
+
+![dbt lineage](docs/dbt-lineage.png)
+
+**Staging views created in Snowflake:**
+
+![Snowflake views](docs/snowflake-views.png)
