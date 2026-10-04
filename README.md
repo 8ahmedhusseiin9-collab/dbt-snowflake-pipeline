@@ -15,6 +15,20 @@ Source tables (Snowflake) -> dbt staging views -> dbt mart table -> data tests -
 - **Data tests:** `not_null` and `unique` checks on key columns
 - **Orchestration:** an Airflow DAG (`dbt_snowflake_workflow`) runs `dbt run` then `dbt test` every day
 
+## Screenshots
+
+**Airflow DAG (dbt run -> dbt test):**
+
+![Airflow DAG](docs/airflow-dag.png)
+
+**dbt lineage graph:**
+
+![dbt lineage](docs/dbt-lineage.png)
+
+**Staging views created in Snowflake:**
+
+![Snowflake views](docs/snowflake-views.png)
+
 ## Tech stack
 
 dbt Core, Snowflake, Apache Airflow 3, Docker Compose, Python
@@ -56,16 +70,4 @@ airflow/
 - dbt is installed in its own virtualenv inside the Airflow image to avoid dependency conflicts with Airflow.
 - Sharing the `target/` folder between Windows and the container caused partial-parse errors, fixed by running dbt with `--no-partial-parse` and a container-local `--target-path`.
 
-## Screenshots
 
-**Airflow DAG (dbt run -> dbt test):**
-
-![Airflow DAG](docs/airflow-dag.png)
-
-**dbt lineage graph:**
-
-![dbt lineage](docs/dbt-lineage.png)
-
-**Staging views created in Snowflake:**
-
-![Snowflake views](docs/snowflake-views.png)
